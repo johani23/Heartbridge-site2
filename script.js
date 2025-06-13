@@ -17,8 +17,8 @@ form.addEventListener("submit", async (e) => {
     });
 
     const data = await response.json();
-    resultDiv.textContent = data.result || "تحليل غير متاح";
+    resultDiv.textContent = data.result || "تحليل غير متاح.";
   } catch (error) {
-    resultDiv.textContent = "حدث خطأ، تأكد من الاتصال بالإنترنت أو بالخادم.";
+    resultDiv.textContent = "حدث خطأ. تأكد من الاتصال بالإنترنت أو بالخادم.";
   }
 });
