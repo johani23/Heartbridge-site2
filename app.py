@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
@@ -12,8 +14,4 @@ def analyze():
 
     # تحليل مبدئي
     result = f"تحليل مبدئي للنص: {input_text}"
-
     return jsonify({"result": result})
-
-# لا تستخدم app.run() مع Render
-# بدلاً من ذلك، خلّي Gunicorn يدير الملف مباشرة: app:app
