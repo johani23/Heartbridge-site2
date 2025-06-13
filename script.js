@@ -1,3 +1,7 @@
+const form = document.querySelector("form");
+const textarea = document.querySelector("textarea");
+const resultDiv = document.querySelector("#result");
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const inputText = textarea.value.trim();
@@ -15,6 +19,6 @@ form.addEventListener("submit", async (e) => {
     const data = await response.json();
     resultDiv.textContent = data.result || "تحليل غير متاح";
   } catch (error) {
-    resultDiv.textContent = "حدث خطأ. تأكد من الاتصال بالإنترنت أو بالخادم.";
+    resultDiv.textContent = "حدث خطأ، تأكد من الاتصال بالإنترنت أو بالخادم.";
   }
 });
