@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS  # أضف هذا السطر
 
 app = Flask(__name__)
-CORS(app)
+CORS(app)  # وأضف هذا السطر
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
@@ -12,6 +12,5 @@ def analyze():
     if not input_text:
         return jsonify({"result": "النص فارغ"}), 400
 
-    # تحليل مبدئي
     result = f"تحليل مبدئي للنص: {input_text}"
     return jsonify({"result": result})
