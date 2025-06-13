@@ -10,9 +10,10 @@ def analyze():
     if not input_text:
         return jsonify({"result": "النص فارغ"}), 400
 
-    # تحليل مبدئي - مؤقتًا نرجع النص نفسه
-    result = f"تحليل مبدئي: {input_text}"
+    # تحليل مبدئي
+    result = f"تحليل مبدئي للنص: {input_text}"
 
     return jsonify({"result": result})
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+
+# لا تستخدم app.run() مع Render
+# بدلاً من ذلك، خلّي Gunicorn يدير الملف مباشرة: app:app
