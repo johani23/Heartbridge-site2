@@ -1,23 +1,24 @@
+const form = document.querySelector("form");
+const textarea = document.querySelector("textarea");
+const resultDiv = document.querySelector("#result");
 
-form.addEventListener("submit", e => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const inputText = textarea.value.trim();
   if (!inputText) return;
 
-  let result = "";
-  const lowered = inputText.toLowerCase();
+  try {
+    const response = await fetch("https://heartbridge-api-backend.onrender.com/analyze", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text: inputText }),
+    });
 
-  if (/أحبك|احبك|احب|أحب/i.test(lowered)) {
-    result = "❤️ مؤشر واضح على توافق وجداني أو تعلق.";
-  } else if (/أكرهك|اكرهك|كره|كاره/i.test(lowered)) {
-    result = "💔 مؤشر على نفور عاطفي أو صدمة سابقة.";
-  } else if (/مشتاق|أشتاق|اشتاق|أحن/i.test(lowered)) {
-    result = "🟣 مؤشر على تعلق عاطفي عالي.";
-  } else if (/أناني|استغلال|ما يهتم|يتجاهل/i.test(lowered)) {
-    result = "⚠️ في دلالة على سلوك غير متزن أو اختلال في العلاقة.";
-  } else {
-    result = "🔅 لا يوجد مؤشر واضح، النص محايد أو غير كافٍ للتحليل.";
+    const data = await response.json();
+    resultDiv.textContent = data.result || "✅ تم التحليل بنجاح.";
+  } catch (error) {
+    resultDiv.textContent = "❌ حدث خطأ في الاتصال بالخادم أو أثناء التحليل.";
   }
-
-  resultDiv.textContent = result;
 });
