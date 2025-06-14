@@ -17,7 +17,7 @@ form.addEventListener("submit", async (e) => {
     });
 
     const data = await response.json();
-    resultDiv.textContent = "✅ تم التحليل بنجاح: " + data.analysis;
+    resultDiv.textContent = "✅ تم التحليل بنجاح: " + data.analysis || data.result;
   } catch (error) {
     resultDiv.textContent = "❌ حدث خطأ في الاتصال بالخادم أو أثناء التحليل.";
   }
