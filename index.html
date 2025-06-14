@@ -1,17 +1,57 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Heartbridge</title>
-  <link rel="stylesheet" href="style.css"/>
+  <style>
+    body {
+      background-color: #fbeaff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #000;
+    }
+    textarea {
+      width: 80%;
+      height: 120px;
+      font-size: 1rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      resize: vertical;
+    }
+    button {
+      background-color: #800080;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.3rem;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>مرحباً بك في Heartbridge</h1>
-    <p>هنا يبدأ تحليلك العاطفي الذكي</p>
-  </div>
+  <h1>مرحباً بك في <strong>Heartbridge</strong></h1>
+  <p>هنا يبدأ تحليلك العاطفي الذكي</p>
+
+  <form>
+    <textarea placeholder="اكتب هنا..." required></textarea>
+    <br />
+    <button type="submit">أرسل</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
