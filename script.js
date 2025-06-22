@@ -1,25 +1,29 @@
-
-const form = document.querySelector("form");
-const textarea = document.querySelector("textarea");
-const resultDiv = document.querySelector("#result");
-
-form.addEventListener("submit", async (e) => {
+document.getElementById("quizForm").addEventListener("submit", function (e) {
   e.preventDefault();
-  const inputText = textarea.value.trim();
-  if (!inputText) return;
 
-  try {
-    const response = await fetch("https://heartbridge-api-backend-3.onrender.com/analyze", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ message: inputText })  // ✅ يتوافق مع app.py
-    });
+  let total = 0;
+  const questions = ["q1", "q2", "q3"];
 
-    const data = await response.json();
-    resultDiv.textContent = "✅ تم التحليل بنجاح: " + data.result;  // ✅ نستخدم result مثل ما يرجع الباكند
-  } catch (error) {
-    resultDiv.textContent = "❌ حدث خطأ في الاتصال بالخادم أو أثناء التحليل.";
+  for (let q of questions) {
+    const answer = document.querySelector(`input[name="${q}"]:checked`);
+    if (!answer) {
+      alert("يرجى الإجابة على جميع الأسئلة.");
+      return;
+    }
+    total += parseInt(answer.value);
   }
+
+  let resultText = "";
+
+  if (total <= 5) {
+    resultText = "نمطك: المستقل – تفضل المسافة وتقلل من أهمية القرب العاطفي.";
+  } else if (total <= 8) {
+    resultText = "نمطك: المتوازن – لديك قدرة جيدة على التعبير والتفاعل.";
+  } else if (total <= 10) {
+    resultText = "نمطك: العاطفي – تتأثر كثيرًا وتحتاج اهتمام دائم.";
+  } else {
+    resultText = "نمطك: التعلّقي – حساس جدًا وقد تبالغ في الاحتياج العاطفي.";
+  }
+
+  document.getElementById("result").textContent = resultText;
 });
