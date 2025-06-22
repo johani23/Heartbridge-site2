@@ -2,55 +2,43 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heartbridge</title>
-  <style>
-    body {
-      background-color: #fbeaff;
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      padding: 2rem;
-    }
-    h1 {
-      color: #000;
-    }
-    textarea {
-      width: 80%;
-      height: 120px;
-      font-size: 1rem;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      resize: vertical;
-    }
-    button {
-      background-color: #800080;
-      color: white;
-      padding: 0.6rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 0.3rem;
-      cursor: pointer;
-    }
-    #result {
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      color: #444;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>استبيان Heartbridge</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>مرحباً بك في <strong>Heartbridge</strong></h1>
-  <p>هنا يبدأ تحليلك العاطفي الذكي</p>
+  <div class="container">
+    <h1>استبيان تحليل الشخصية</h1>
+    <form id="quizForm">
+      <div class="question">
+        <label>١. ما مدى تعبيرك عن مشاعرك في العلاقات؟</label><br>
+        <input type="radio" name="q1" value="1"> نادرًا<br>
+        <input type="radio" name="q1" value="2"> أحيانًا<br>
+        <input type="radio" name="q1" value="3"> غالبًا<br>
+        <input type="radio" name="q1" value="4"> دائمًا<br>
+      </div>
 
-  <form>
-    <textarea placeholder="اكتب هنا..." required></textarea>
-    <br />
-    <button type="submit">أرسل</button>
-  </form>
+      <div class="question">
+        <label>٢. كيف تتعامل مع الخلافات؟</label><br>
+        <input type="radio" name="q2" value="1"> أتجنب المواجهة<br>
+        <input type="radio" name="q2" value="2"> أهدأ ثم أتكلم<br>
+        <input type="radio" name="q2" value="3"> أتكلم فورًا<br>
+        <input type="radio" name="q2" value="4"> أُصرّ على موقفي دائمًا<br>
+      </div>
 
-  <div id="result"></div>
+      <div class="question">
+        <label>٣. ما مدى حاجتك المستمرة للاهتمام من الطرف الآخر؟</label><br>
+        <input type="radio" name="q3" value="1"> ضعيفة<br>
+        <input type="radio" name="q3" value="2"> متوسطة<br>
+        <input type="radio" name="q3" value="3"> عالية<br>
+        <input type="radio" name="q3" value="4"> مفرطة<br>
+      </div>
+
+      <button type="submit">احسب النتيجة</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
